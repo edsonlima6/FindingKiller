@@ -5,10 +5,18 @@ namespace FindKiller.Models
     {
         public Investigador()
         {
-
+            Local = new Local();
+            Suspect = new Suspect();
+            Gun = new Gun();
         }
-        public int Local { get; set; }
-        public int Suspect { get; set; }
-        public int Gun { get; set; }
+
+        public string pLocal { get; set; }
+        public string pSuspect { get; set; }
+        public string pGun { get; set; }
+
+        public Local Local { get; set; }
+        public Suspect Suspect { get; set; }
+        public Gun Gun { get; set; }
+               
     }
 }

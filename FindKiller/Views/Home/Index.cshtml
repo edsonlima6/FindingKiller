@@ -1,5 +1,5 @@
 ﻿
-
+@model FindKiller.Models.Investigador
 
 <div class="container">
     <br />
@@ -17,20 +17,27 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr class="d-none">
+                <th> <input type="hidden" id="SuspectId" value="@Model.Suspect.SuspectId" /> </th>
+                <td> <input type="hidden" id="LocalId" value="@Model.Local.LocalId" /> </td>
+                <td> <input type="hidden" id="GunId" value="@Model.Gun.GunId" /> </td>
             </tr>
+            <tr>
+                <th id="nameSuspect"> @Model.Suspect.Name </th>
+                <td id="nameLocal">  @Model.Local.Name </td>
+                <td id="nameGun">   @Model.Gun.Name  </td>
+            </tr>
+
         </tbody>
     </table>
 
 
     <div class="row">
         <div class="col">
-
-
         </div>
         <div class="col">
             <div class="row">
-                <input class="form-control" type="text" maxlength="3" id="informaSuspect" />
+                <input class="form-control" type="number" max="3" min="0" maxlength="1" id="informaSuspect" />
             </div>
             <div class="row mt-2">
                 <button id="btnSend" class="btn btn-primary" type="button"> Send Answer </button>
@@ -41,6 +48,28 @@
 
         </div>
 
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
