@@ -6,5 +6,8 @@ namespace FindKiller.Models
         public Suspect()
         {
         }
+
+        public int SuspectId { get; set; }
+        public string Name { get; set; }
     }
 }

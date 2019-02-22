@@ -5,6 +5,10 @@ namespace FindKiller.Models
     {
         public Investigador()
         {
+
         }
+        public int Local { get; set; }
+        public int Suspect { get; set; }
+        public int Gun { get; set; }
     }
 }

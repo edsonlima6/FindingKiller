@@ -6,5 +6,8 @@ namespace FindKiller.Models
         public Local()
         {
         }
+
+        public int LocalId { get; set; }
+        public string Name { get; set; }
     }
 }
