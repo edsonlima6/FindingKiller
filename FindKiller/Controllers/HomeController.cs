@@ -33,6 +33,8 @@ namespace FindKiller.Controllers
             return View(inv);
         }
 
+
+
         [HttpPost]
         public async Task<ActionResult> GetSuspect(Investigador investigador)
         {
@@ -51,7 +53,7 @@ namespace FindKiller.Controllers
                                 db.Suspect.Remove(suspect);
                                 db.SaveChanges();
                             }
-                            investigador.Suspect = db.Suspect.OrderBy(s => s.SuspectId).FirstOrDefault();
+                            investigador.Suspect = db.Suspect.OrderBy(s => s.SuspectId).FirstOrDefault() ?? investigador.Suspect;
                             break;
 
                         case 2:
@@ -61,7 +63,7 @@ namespace FindKiller.Controllers
                                 db.Local.Remove(local);
                                 db.SaveChanges();
                             }
-                            investigador.Local = db.Local.OrderBy(l => l.LocalId).FirstOrDefault();
+                            investigador.Local = db.Local.OrderBy(l => l.LocalId).FirstOrDefault() ?? investigador.Local;
                             break;
 
                         case 3:
@@ -71,7 +73,7 @@ namespace FindKiller.Controllers
                                 db.Gun.Remove(gun);
                                 db.SaveChanges();
                             }
-                            investigador.Gun = db.Gun.OrderBy(g => g.GunId).FirstOrDefault();
+                            investigador.Gun = db.Gun.OrderBy(g => g.GunId).FirstOrDefault() ?? investigador.Gun;
                             break;
 
                         case 0:
@@ -115,7 +117,7 @@ namespace FindKiller.Controllers
                         listGun.Add(new Gun { GunId = 1, Name = "Cajado Devastador" });
                         listGun.Add(new Gun { GunId = 2, Name = "Phaser" });
                         listGun.Add(new Gun { GunId = 3, Name = "Peixeira" });
-                        listGun.Add(new Gun { GunId = 4, Name = "Trezoitao" });
+                        listGun.Add(new Gun { GunId = 4, Name = "Trezoitão" });
                         listGun.Add(new Gun { GunId = 5, Name = "Sabre de Luz" });
                         listGun.Add(new Gun { GunId = 6, Name = "Bomba" });
 
@@ -123,7 +125,7 @@ namespace FindKiller.Controllers
                         db.SaveChanges();
 
 
-                        listLocal.Add(new Local { LocalId = 1, Name = "Eternia" });
+                        listLocal.Add(new Local { LocalId = 1, Name = "Etérnia" });
                         listLocal.Add(new Local { LocalId = 2, Name = "Vulcano" });
                         listLocal.Add(new Local { LocalId = 3, Name = "Tattoine" });
                         listLocal.Add(new Local { LocalId = 4, Name = "Springfield" });
@@ -131,8 +133,8 @@ namespace FindKiller.Controllers
                         listLocal.Add(new Local { LocalId = 6, Name = "Nova York" });
                         listLocal.Add(new Local { LocalId = 7, Name = "Siberia" });
                         listLocal.Add(new Local { LocalId = 8, Name = "Machu Picchu" });
-                        listLocal.Add(new Local { LocalId = 9, Name = "Show Katinguele" });
-                        listLocal.Add(new Local { LocalId = 10, Name = "Sao Paulo" });
+                        listLocal.Add(new Local { LocalId = 9, Name = "Show Katinguêle" });
+                        listLocal.Add(new Local { LocalId = 10, Name = "São Paulo" });
 
                         db.Local.AddRange(listLocal);
                         db.SaveChanges();

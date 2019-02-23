@@ -44,10 +44,6 @@ function SendAnswer(){
             inv.Gun.Name = $("#nameGun").text();
             inv.Suspect.SuspectId = $("#SuspectId").val();
             inv.Suspect.Name = $("#nameSuspect").text();
-
-            console.log("Click");
-            console.log(inv);
-
             PostRequest(inv);         
         }
         else
@@ -64,7 +60,7 @@ function PostRequest(inv) {
 
     var url = "/Home/GetSuspect";
     $.post(url, inv, function (data) {
-        //console.log(data);
+ 
         GetStringTD(data);
     });
 }
