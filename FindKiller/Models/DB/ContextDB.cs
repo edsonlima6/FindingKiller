@@ -6,7 +6,7 @@ namespace FindKiller.Models.DB
 {
     public class ContextDB : DbContext
     {
-        public ContextDB() : base()
+        public ContextDB() : base("MovieDBContext")
         {
 
         }

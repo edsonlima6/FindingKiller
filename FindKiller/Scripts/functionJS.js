@@ -36,7 +36,7 @@ function SendAnswer(){
     $("#btnSend").click(function () {
 
         var result = $("#informaSuspect").val();
-        if (result >= 0) {
+        if (result >= 0 && result < 4) {
 
             var inv = new Investigador(result);
             inv.Local.LocalId = $("#LocalId").val();
@@ -49,7 +49,7 @@ function SendAnswer(){
             PostRequest(inv);         
         }
         else
-            alert("Please insert a value in the field");
+            alert("Please insert a value between 0 and 3 in the field.");
   
       });
                                     
