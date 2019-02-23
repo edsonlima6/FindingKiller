@@ -12,11 +12,6 @@ namespace FindKiller.Controllers
 {
     public class HomeController : Controller
     {
-        private ContextDB db;
-        private List<Gun> listGun { get; set; }
-        private List<Suspect> listSuspect { get; set; }
-        private List<Local> listLocal { get; set; }
-
         public HomeController()
         {
             LoadData();
@@ -41,11 +36,12 @@ namespace FindKiller.Controllers
         [HttpPost]
         public async Task<ActionResult> GetSuspect(Investigador investigador)
         {
+
             try
             {
-                using (var db = new ContextDB())
+                using (ContextDB db = new ContextDB())
                 {
-
+                    ViewBag.investigador = null;
                     switch (Convert.ToInt32(investigador.pLocal))
                     {
                         case 1:
@@ -79,9 +75,8 @@ namespace FindKiller.Controllers
                             break;
 
                         case 0:
-                            investigador.pLocal = "OK";
                             string sql = "delete from gun; delete from local; delete from Suspect;";
-                            await db.Database.ExecuteSqlCommandAsync(sql);
+                            db.Database.ExecuteSqlCommand(sql);
                             break;
                     }
 
@@ -102,10 +97,11 @@ namespace FindKiller.Controllers
         {
             try
             {
-                listGun = new List<Gun>();
-                listLocal = new List<Local>();
-                listSuspect = new List<Suspect>();
-                using (var db = new ContextDB())
+                 List<Gun> listGun = new List<Gun>();
+                 List<Suspect> listSuspect = new List<Suspect>();
+                 List<Local> listLocal = new List<Local>();
+
+                using (ContextDB db = new ContextDB())
                 {
                     if (!db.Database.Exists())
                     {

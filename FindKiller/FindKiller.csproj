@@ -99,7 +99,6 @@
     </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Models\DB\DBInitialize.cs" />
     <Compile Include="Models\Suspect.cs" />
     <Compile Include="Models\Local.cs" />
     <Compile Include="Models\Gun.cs" />

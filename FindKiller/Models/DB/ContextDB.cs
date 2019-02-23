@@ -10,6 +10,7 @@ namespace FindKiller.Models.DB
         {
 
         }
+
         public DbSet<Gun> Gun { get; set; }
         public DbSet<Local> Local { get; set; }
         public DbSet<Suspect> Suspect { get; set; }

@@ -15,17 +15,16 @@ function GetStringTD(data) {
                  <td id="nameGun"> {5} </td> \
               </tr>'
 
-    hid = hid.replace("{0}", data.Local.LocalId).replace("{1}", data.Gun.GunId).replace("{2}", data.Suspect.SuspectId);
+    hid = hid.replace("{0}", data.Suspect.SuspectId).replace("{1}",  data.Local.LocalId).replace("{2}",  data.Gun.GunId);
     hid = hid.replace("{3}", data.Suspect.Name).replace("{4}", data.Local.Name).replace("{5}", data.Gun.Name);
 
     $("#tableKiller tbody").html(hid);
 
-    console.log(data);
 
-    if (data.pLocal == "Ok") {
+    if (data.pLocal == "0") {
 
-        console.log(data.pLocal);
-        $('#exampleModal').modal('show');  
+        $("#btnSend").attr("disabled","disabled");
+        $("#exampleModal").modal("toggle");  
     }
 
 }
@@ -46,10 +45,13 @@ function SendAnswer(){
             inv.Suspect.SuspectId = $("#SuspectId").val();
             inv.Suspect.Name = $("#nameSuspect").text();
 
+            console.log("Click");
+            console.log(inv);
+
             PostRequest(inv);         
         }
         else
-            alert("Please insert a value between 0 and 3 in the field.");
+            alert("Por favor digitar um numero entre 0 e 3.");
   
       });
                                     
@@ -58,10 +60,11 @@ function SendAnswer(){
 
 function PostRequest(inv) {
     if (inv == null)
-        var inv = new Investigador(null, null, null);
+        var inv = new Investigador(null);
 
     var url = "/Home/GetSuspect";
     $.post(url, inv, function (data) {
+        //console.log(data);
         GetStringTD(data);
     });
 }
