@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "FindSuspect";
+}
+
+
+@model FindKiller.Models.Investigador
+
+<div class="container">
+    <br />
+
+    <h2 style="text-align:center;"> Encontre o Assassino </h2>
+
+    <br />
+
+    <table id="tableKiller" class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col"> Assassino </th>
+                <th scope="col"> Local </th>
+                <th scope="col"> Arma </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="d-none">
+                <th> <input type="hidden" id="SuspectId" value="@Model.Suspect.SuspectId" /> </th>
+                <td> <input type="hidden" id="LocalId" value="@Model.Local.LocalId" /> </td>
+                <td> <input type="hidden" id="GunId" value="@Model.Gun.GunId" /> </td>
+            </tr>
+            <tr>
+                <th id="nameSuspect"> @Model.Suspect.Name </th>
+                <td id="nameLocal">  @Model.Local.Name </td>
+                <td id="nameGun">   @Model.Gun.Name  </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            •   0 indica que todos estão corretos <br />
+            •   1 indica que o assassino está incorreto <br />
+            •   2 indica que o local está incorreto <br />
+            •   3 indica que a arma está incorreta <br />
+
+        </div>
+        <div class="col"></div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+            <div class="row">
+                <input class="form-control" type="number" max="3" min="0" id="informaSuspect" />
+            </div>
+            <div class="row mt-2">
+                <button id="btnSend" class="btn btn-primary" type="button"> Send Answer </button>
+            </div>
+        </div>
+        <div class="col">
+
+
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Parabéns, caso solucionado! </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    Gostaria de iniciar o questionamento novamente?
+                </div>
+                <div class="modal-footer">
+                    <a href="~/Home/Index" class="btn btn-outline-primary"> Sim </a>
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal" aria-label="Close"> Não </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

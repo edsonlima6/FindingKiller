@@ -21,6 +21,13 @@ namespace FindKiller.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult FindSuspect()
+        {
             Investigador inv = new Investigador();
             using (var db = new ContextDB())
             {
@@ -28,7 +35,7 @@ namespace FindKiller.Controllers
                 inv.Gun = db.Gun.OrderBy(g => g.GunId).FirstOrDefault();
                 inv.Suspect = db.Suspect.OrderBy(s => s.SuspectId).FirstOrDefault();
             }
-            
+
 
             return View(inv);
         }
